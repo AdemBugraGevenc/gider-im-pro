@@ -11,9 +11,9 @@ import {
     Plus,
     Bell
 } from 'lucide-react';
-import { CreditCard as CreditCardIcon, Wallet } from 'lucide-react';
+import { Wallet } from 'lucide-react';
 import { Transaction, Goal, Subscription, Budget, SummaryStats, TimelineItem, SettingsState, CreditCard, Notification } from './types';
-import { INITIAL_DATA, INITIAL_GOALS, INITIAL_SUBSCRIPTIONS, INITIAL_BUDGETS, INITIAL_CREDIT_CARDS } from './data/mockData';
+
 import { formatCurrency, formatMonthYear, formatDateTitle } from './utils/formatters';
 import { Ozet } from './pages/Ozet';
 import { Analiz } from './pages/Analiz';
@@ -30,12 +30,12 @@ import { BildirimlerModal } from './components/BildirimlerModal';
 export default function App() {
     const [session, setSession] = useState<Session | null>(null);
     const [loading, setLoading] = useState(true);
-    const [transactions, setTransactions, transactionsLoading] = useSupabaseData<Transaction>('transactions', []);
-    const [goals, setGoals, goalsLoading] = useSupabaseData<Goal>('goals', []);
-    const [subscriptions, setSubscriptions, subsLoading] = useSupabaseData<Subscription>('subscriptions', []);
-    const [budgets, setBudgets, budgetsLoading] = useSupabaseData<Budget>('budgets', []);
-    const [creditCards, setCreditCards, cardsLoading] = useSupabaseData<CreditCard>('credit_cards', []);
-    const [notifications, setNotifications, notificationsLoading] = useSupabaseData<Notification>('notifications', []);
+    const [transactions, setTransactions] = useSupabaseData<Transaction>('transactions', []);
+    const [goals, setGoals] = useSupabaseData<Goal>('goals', []);
+    const [subscriptions, setSubscriptions] = useSupabaseData<Subscription>('subscriptions', []);
+    const [budgets, setBudgets] = useSupabaseData<Budget>('budgets', []);
+    const [creditCards, setCreditCards] = useSupabaseData<CreditCard>('credit_cards', []);
+    const [notifications, setNotifications] = useSupabaseData<Notification>('notifications', []);
 
     // const [transactions, setTransactions] = useState(INITIAL_DATA);
     // const [goals, setGoals] = useState(INITIAL_GOALS);
@@ -174,7 +174,7 @@ export default function App() {
             setLoading(false);
         });
 
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
             setSession(session);
         });
 
