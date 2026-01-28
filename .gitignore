@@ -1,0 +1,31 @@
+# Bagimliliklar
+node_modules/
+pnpm-debug.log*
+
+# Derleme Ciktilari
+dist/
+build/
+out/
+.next/
+bin/
+obj/
+
+# Ortam Degiskenleri
+.env
+.env.*
+!.env.example
+
+# Editor ve IDE Ayarlari
+.vscode/
+.idea/
+*.sln
+*.suo
+*.user
+
+# Sistem Dosyalari
+.DS_Store
+Thumbs.db
+
+# Test ve Loglar
+coverage/
+*.log
