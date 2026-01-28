@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "homepage": "https://AdemBugraGevenc.github.io/gider-im-pro",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "pnpm exec tsc && vite build",
+    "preview": "vite preview",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.91.1",
-    "jspdf": "^4.0.0",
-    "jspdf-autotable": "^5.0.7",
     "lucide-react": "^0.562.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -21,6 +21,7 @@
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.2.0",
     "autoprefixer": "^10.4.16",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.0",
